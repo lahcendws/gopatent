@@ -1,0 +1,105 @@
+@import "../../../variables";
+
+/* Animation */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Image & Call-to-Action Box Section ---------------------------------------------------------------------------------------------- */
+.heroimage {
+  background-image: url('/assets/heroimage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  background-origin: content-box;
+
+
+  h1 {
+    color: $secondary;
+    font-size: $size-1;
+    padding-top: 8%;
+    font-family: "Roboto Slab", serif;
+    @include sm-max {
+      padding-top: 60px;
+      font-size: $size-2;
+    }
+  }
+
+  p {
+    color: $white;
+    font-size: $size-2;
+    @include sm-max {
+      font-size: $size-4;
+    }
+    @include sm-only {
+      font-size: $size-4;
+    }
+    @include md-only {
+      font-size: $size-4;
+    }
+    @include  lg-only {
+      font-size: $size-4 - 2;
+    }
+  }
+
+  .box-calltoaction {
+    max-width: 750px;
+    margin: 0 auto;
+    min-height: 250px;
+    background-color: $light-primary;
+    animation-duration: 1s; /* the duration of the animation */
+    animation-timing-function: ease-out; /* how the animation will behave */
+    animation-delay: 0s; /* how long to delay the animation from starting */
+    animation-iteration-count: 1; /* how many times the animation will play */
+    animation-name: slideInFromTop; /* the name of the animation we defined above */
+
+    @include xl {
+      bottom: -220px;
+    }
+
+    @include lg-only {
+      bottom: -100px;
+    }
+
+    @include md-only {
+      bottom: -100px;
+    }
+
+
+    @include sm-only {
+      bottom: -100px;
+    }
+
+    @include sm-max {
+      bottom: -175px;
+    }
+
+    .btns-container {
+      a {
+        font-size: 1.5em;
+        min-width: 250px;
+        @include sm-max {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+/* Video Section ---------------------------------------------------------------------------------------------- */
+.vid-section {
+  video {
+    margin: 20vh 0 10vh 0;
+    @include sm-only {
+      margin: 45vh 0;
+    }
+
+  }
+  .videoContainer {
+    margin: 15rem 0 3rem 0;
+  }
+}

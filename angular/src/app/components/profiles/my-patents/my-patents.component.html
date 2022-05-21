@@ -1,0 +1,110 @@
+<section class="fav-patent-sec">
+
+  <h2 class="text-center my-5 fw-bold">Mes brevets favoris</h2>
+  <div *ngIf="favoritePatents.length == 0 || favoritePatents.length == undefined"
+       class="noPatents my-5 py-5 text-center">
+    <img src="../assets/icons/icons8-empty-64.png" alt="" class="mb-3">
+    <p class="text-center mb-5 mt-3">Vous n'avez pas encore ajouté de brevets à vos favoris.</p>
+    <a [routerLink]="['/recherche']" class="text-center btn btn-secondary p-3 my-3 fw-bold text-uppercase">Commencez
+      votre recherche maintenant</a>
+  </div>
+  <div *ngIf="favoritePatents.length > 0" class="accordion" id="accordionPanelsStayOpenExample">
+    <div *ngFor="let patent of favoritePatents; let i=index;" class="accordion-item">
+      <h3 class="accordion-header" id="panelsStayOpen-heading-{{patent.id}}">
+        <button class="accordion-button collapsed button-patent-accord" type="button" data-bs-toggle="collapse"
+                attr.data-bs-target="#panelsStayOpen-collapse-{{patent.id}}" aria-expanded="false"
+                attr.aria-controls="panelsStayOpen-collapse-{{patent.id}}" (click)="getDetailsByPatentCode(i)">
+          <!--Patent index -->
+          <span class="patent-index px-2 text-secondary">{{i + 1}}.</span>
+          <!--Patent number -->
+          <span class="fw-bold px-2 d-none d-sm-inline text-primary">{{ patent.publicationCode }} </span>
+          <!--Patent main title -->
+          <span class="px-sm-2 text-uppercase fw-bold">{{patent.patentTitle}}</span>
+        </button>
+      </h3>
+      <div id="panelsStayOpen-collapse-{{patent.id}}" class="accordion-collapse collapse"
+           attr.aria-labelledby="panelsStayOpen-heading-{{patent.id}}">
+        <!-- This element will be shown while the patent infos are being loaded -->
+        <div *ngIf="patentsDetails.length == 0 && patentsDetails[i] == undefined && hasInternalError[i] == false">
+          <h3 class="text-center chargingTitle my-5">Chargement en cours</h3>
+          <div class="d-flex justify-content-center my-3">
+            <mat-spinner customSpinner color="#FCAC4C"></mat-spinner>
+          </div>
+        </div>
+        <div *ngIf="hasInternalError[i] == true">
+          <h3 class="text-center chargingTitle my-5">Désolé, une erreur s'est produite lors de la récupération des données de ce brevet. <br> Veuillez réessayer plus tard.</h3>
+          <div class="d-flex justify-content-center my-3">
+
+          </div>
+        </div>
+        <!-- Checking if the patentDetails variable has content and if the index related to the patent is -->
+        <div class="accordion-body accordionElement"
+             *ngIf="patentsDetails.length > 0 && patentsDetails[i] != undefined">
+          <div class="row">
+            <form class="my-5">
+              <input class="w-100 styled-slider slider-progress" type="range" min="1" max="3" value="0">
+              <div class="d-flex justify-content-between fw-bold score-range">
+                <span class="score-range">Pas d'intérêt</span> <span class="score-range">Intéressé</span><span
+                class="score-range">Très intéressé</span>
+              </div>
+            </form>
+            <div class="col col-lg-6">
+              <h3 class="fw-bold">Titre:</h3>
+              <p>{{patentsDetails[i].title}}</p>
+              <h3 class="fw-bold">Numéro de publication:</h3>
+              <p>{{patentsDetails[i].patentNumber}}</p>
+              <h3 class="fw-bold">Date de Publication:</h3>
+              <p>{{patentsDetails[i].releaseDate}}</p>
+              <h3 class="fw-bold">Demandeur(s):</h3>
+              <p>{{patentsDetails[i].applicantName}}</p>
+              <h3 class="fw-bold">Domaines:</h3>
+              <div class="mb-2">
+                <span class="badge rounded-pill bg-secondary mx-1 ms-1"
+                      *ngFor="let domaine of patentsDetails[i].domains">{{ domaine }}</span>
+              </div>
+              <h3 class="fw-bold">Inventeur(s):</h3>
+
+              <div class="m-0 p-0" *ngIf="patentsDetails[i].inventorsArrayList?.length != 0">
+                <p *ngFor="let inventor of patentsDetails[i].inventorsArrayList"> {{ inventor }} </p>
+              </div>
+              <p *ngIf="patentsDetails[i].inventorsArrayList?.length == 0
+              "> Il n'y a pas d'informations sur l'inventeur.
+              </p>
+              <h3 class="fw-bold">Résumé:</h3>
+              <p *ngIf="patentsDetails[i].patentAbstract != null">{{patentsDetails[i].patentAbstract}}</p>
+              <p *ngIf="patentsDetails[i].patentAbstract == null">Il n'y a pas de résumé pour ce brevet.</p>
+              <h3 class="fw-bold">Voir plus:</h3>
+              <a target="_blank" class="mb-5" href="{{patentsDetails[i].espaceNetUrl}}">Cliquez ici pour voir ce brevet
+                sur l'Office Européen des
+                Brevets</a>
+              <div class="my-5 text-center">
+                <a (click)="deleteFavoritePatent(patent.id)" class="btn btn-outline-danger mt-5">Retirer des favoris</a>
+              </div>
+
+            </div>
+            <div class="col col-lg-6">
+              <div class=" justify-content-center d-flex">
+                <img class="w-50 align-item-center my-3" src="{{patentsDetails[i].figure}}" alt="">
+              </div>
+              <div class="alert alert-success alert-dismissible fade show text-center" role="alert"
+                   *ngIf="isUpdated[i]">
+                <strong>Le commentaire a été bien ajouté.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form class="p-1" action="" (ngSubmit)="onSubmit(i)"
+                    [formGroup]="formsEditFavorite[i]">
+                <div class="d-flex justify-content-center flex-column p-md-5">
+                  <textarea class="form-control" name="comment" formControlName="comment" id="comment" cols="30"
+                            rows="10"></textarea>
+                  <input type="hidden" name="publicationCode" formControlName="publicationCode">
+                  <input type="hidden" name="patentTitle" formControlName="patentTitle">
+                  <input class="btn btn-primary" type="submit" value="Sauvegarder ma note"/>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

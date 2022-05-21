@@ -1,0 +1,59 @@
+<main>
+  <section class="justify-content-center d-flex">
+    <div class="container search-form p-5 rounded shadow">
+     <h2 class="fw-bold my-5 text-center">Lancez votre recherche</h2>
+      <div>
+        <!-- GS: Binding the form with the formGroup created in the component.ts and applying the onSubmit function when the form is submitted-->
+        <form [formGroup]="searchFormGroup" (ngSubmit)="onsubmit()" #searchForm="ngForm">
+          <div class="mb-4">
+            <label for="keywords" class="form-label fw-bold">Mots-clés</label>
+            <!-- GS: Binding control in each input with the directive formControlName-->
+            <input type="text" #keywordInput name="keywordInput" class="form-control" id="keywords" aria-describedby="keywords"
+                   formControlName="keywords"> <!--[(value)]="keywords"-->
+
+            <div id="emailHelp" class="form-text">Séparez les mots clés par des espaces (ex: pneus caoutchouc
+              automobile)
+            </div>
+            <div   *ngIf="searchForm.errors?.['isRequired'] && searchForm.submitted" class="text-danger" >
+              Completez au moins un champ
+            </div>
+              <span class="text-danger" *ngIf="searchForm.submitted && searchFormGroup.controls['keywords'].errors?.['maxlength']">
+                Les mot-clés doivent comporter au maximum {{ _nbMaxLength }} caractères.
+                  </span>
+          </div>
+          <div class="mb-4">
+            <label for="applicant" class="form-label fw-bold">Demandeur</label>
+            <input type="text" class="form-control" id="applicant" formControlName="applicant">
+            <div  *ngIf="searchForm.errors?.['isRequired'] && searchForm.submitted"  class="text-danger">
+              Completez au moins un champ
+            </div>
+              <span class="text-danger" *ngIf="searchForm.submitted && searchFormGroup.controls['applicant'].errors?.['maxlength']">
+                Le nom de demandeur doit comporter au maximum {{ _nbMaxLength }} caractères.
+                  </span>
+          </div>
+          <H3>Période</H3>
+          <div class="mb-4">
+            <label class="form-check-label fw-bold" for="publicationDateStart">Date de début</label>
+            <input type="date" class="form-control" id="publicationDateStart" formControlName="publicationDateStart">
+            <div  *ngIf="searchForm.errors?.['isRequired'] && searchForm.submitted"  class="text-danger">
+              Completez au moins un champ
+            </div>
+              <span class="text-danger" *ngIf="searchFormGroup.controls['publicationDateStart'].errors?.['min']&& searchForm.submitted " >La date doit être inferieure à la date actuelle et à la date de fin. </span>
+          </div>
+          <div class="mb-4">
+            <label class="form-check-label fw-bold" for="publicationDateEnd">Date de fin</label>
+            <input type="date" class="form-control" id="publicationDateEnd" formControlName="publicationDateEnd">
+            <div  *ngIf="searchForm.errors?.['isRequired'] && searchForm.submitted"  class="text-danger">
+              Completez au moins un champ
+            </div>
+            <span class="text-danger" *ngIf="searchFormGroup.controls['publicationDateEnd'].errors?.['min'] && searchForm.submitted " >La date doit être inferieur à la date actuelle et supérieure à la date de début. </span>
+          </div>
+          <div class="text-center">
+              <!--When the the button is submitted, it will send the input values to the service responsable for share the form content -->
+            <button type="submit" class="btn btn-primary px-5 fw-bold my-3">Rechercher</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>

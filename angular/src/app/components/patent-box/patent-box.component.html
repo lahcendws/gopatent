@@ -1,0 +1,61 @@
+<div class="scroll">
+  <div  *ngFor="let patent of searchResults?.getResults(); let i = index" class="card mb-3 patentBox" (click)="sendPatent(i)">
+    <div class="card-header fw-bold d-flex justify-content-between align-items-center" [ngClass]="i == selectedIndex ? 'bg-primary text-secondary' : 'bg-secondary text-primary'">
+      <h2 class="patentTitle my-2"><span>{{i + 1}}. </span>{{ patent.title }}</h2>
+      <div class="d-flex justify-content-between align-items-center" [ngClass]="i == selectedIndex ? 'text-secondary' : 'text-primary'">
+        <div *ngIf="patent.favorite" class="bi bi-star-fill" (click)="addFavoritePatent(i)"></div>
+        <div *ngIf="!patent.favorite" class="bi bi-star" (click)="addFavoritePatent(i)"></div>
+      </div>
+    </div>
+    <div class="card-body shadow">
+      <div class="row">
+        <div class="col col-md-6">
+          <p class="fw-bold text-start">Demandeur: <span class="fw-normal">{{ patent.applicantName }}</span></p>
+          <p class="fw-bold text-start">Inventeur: <span class="fw-normal" *ngFor="let inventor of patent.inventorsArrayList ">{{ inventor }}</span></p>
+        </div>
+        <div class="col col-md-6">
+          <p class="fw-bold text-start">Numéro de publication: <span class="fw-normal">{{ patent.patentNumber }}</span></p>
+          <p class="fw-bold text-start">Date de publication: <span class="fw-normal">{{ patent.releaseDate }}</span></p>
+        </div>
+        <button *ngIf="innerWidth < 960" type="button" class="btn btn-primary" data-bs-toggle="modal" attr.data-bs-target='#patentModalCenter{{i}}' id='patentDetailsModal{{i}}'>Détails</button>
+        <form>
+          <input class="w-100 styled-slider slider-progress" type="range" min="1" max="3" value="0">
+          <div class="d-flex justify-content-between fw-bold">
+            <span>Pas d'intérêt</span> <span>Intéressé</span><span>Très intéressé</span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div *ngIf="innerWidth < 960" class="modal fade" id='patentModalCenter{{i}}' tabindex="-1" role="dialog" aria-labelledby="patentModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="patentModalCenterTitle">{{ patent?.title }}</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><span class="fw-bold my-2">Numéro de publication: </span>{{ patent?.patentNumber }}</p>
+            <p><span class="fw-bold my-2">Date de publication: </span>{{ patent?.releaseDate }}</p>
+            <p><span class="fw-bold my-2">Numéro IPC: </span>{{ patent?.ipc}}</p>
+            <p><span class="fw-bold my-2">Catégorie(s): </span><span *ngFor="let bigDomain of patent?.bigDomains"> {{ bigDomain }} </span></p>
+            <p><span class="fw-bold my-2">Domaine(s): </span><span *ngFor="let domain of patent?.domains"> {{ domain }} </span></p>
+            <p><span class="fw-bold my-2">Demandeur: </span>{{ patent?.applicantName }}</p>
+            <p><span class="fw-bold my-2">Inventeur: </span ><span *ngFor="let inventor of patent?.inventorsArrayList"> {{ inventor }} </span></p>
+            <p><span class="fw-bold my-2"><a href="{{ patent?.espaceNetUrl }}" target= "_blank">Lien vers la fiche sur espacenet</a></span></p>
+            <p><span class="fw-bold my-2">Résumé: </span>{{ patent?.patentAbstract }}</p>
+            <div class="d-flex align-items-center my-5">
+              <img class="w-50 m-auto" src="{{ patent?.figure }}"alt="">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

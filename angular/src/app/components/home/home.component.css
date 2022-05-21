@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/*// Colors  -----------------------------------------------------------------------------------------------*/
+/*// Fonts  -----------------------------------------------------------------------------------------------*/
+/*// Mixins for responsive development -----------------------------------------------------------------------------------------------*/
+/*// image dimension -----------------------------------------------------------------------------------------------*/
+/* Fix IE Only */
+/* Animation */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* Image & Call-to-Action Box Section ---------------------------------------------------------------------------------------------- */
+.heroimage {
+  background-image: url("/assets/heroimage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+  background-origin: content-box;
+}
+.heroimage h1 {
+  color: #FCAC4C;
+  font-size: 64px;
+  padding-top: 8%;
+  font-family: "Roboto Slab", serif;
+}
+@media (max-width: 575.98px) {
+  .heroimage h1 {
+    padding-top: 60px;
+    font-size: 48px;
+  }
+}
+.heroimage p {
+  color: #FBFBFA;
+  font-size: 48px;
+}
+@media (max-width: 575.98px) {
+  .heroimage p {
+    font-size: 24px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .heroimage p {
+    font-size: 24px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.92px) {
+  .heroimage p {
+    font-size: 24px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .heroimage p {
+    font-size: 22px;
+  }
+}
+.heroimage .box-calltoaction {
+  max-width: 750px;
+  margin: 0 auto;
+  min-height: 250px;
+  background-color: #548CC4;
+  animation-duration: 1s;
+  /* the duration of the animation */
+  animation-timing-function: ease-out;
+  /* how the animation will behave */
+  animation-delay: 0s;
+  /* how long to delay the animation from starting */
+  animation-iteration-count: 1;
+  /* how many times the animation will play */
+  animation-name: slideInFromTop;
+  /* the name of the animation we defined above */
+}
+@media (min-width: 1200px) {
+  .heroimage .box-calltoaction {
+    bottom: -220px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .heroimage .box-calltoaction {
+    bottom: -100px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.92px) {
+  .heroimage .box-calltoaction {
+    bottom: -100px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .heroimage .box-calltoaction {
+    bottom: -100px;
+  }
+}
+@media (max-width: 575.98px) {
+  .heroimage .box-calltoaction {
+    bottom: -175px;
+  }
+}
+.heroimage .box-calltoaction .btns-container a {
+  font-size: 1.5em;
+  min-width: 250px;
+}
+@media (max-width: 575.98px) {
+  .heroimage .box-calltoaction .btns-container a {
+    font-size: 1em;
+  }
+}
+
+/* Video Section ---------------------------------------------------------------------------------------------- */
+.vid-section video {
+  margin: 20vh 0 10vh 0;
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .vid-section video {
+    margin: 45vh 0;
+  }
+}
+.vid-section .videoContainer {
+  margin: 15rem 0 3rem 0;
+}
+
+/*# sourceMappingURL=home.component.css.map */

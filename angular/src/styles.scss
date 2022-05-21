@@ -1,0 +1,67 @@
+/* We need to import the variables file in each component to make it work. In here it will only replace the boostrap variables */
+@import "_variables";
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+/* Importing project fonts */
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  src:
+    url('../src/assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-style: italic;
+  src:
+    url('../src/assets/fonts/Roboto/Roboto-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  src:
+    url('../src/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: italic;
+  src:
+    url('../src/assets/fonts/Roboto/Roboto-Italic.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 700;
+  src:
+    url('../src/assets/fonts/Roboto_Slab/RobotoSlab-Bold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  src:
+    url('../src/assets/fonts/Roboto_Slab/RobotoSlab-Regular.ttf') format('truetype')
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html {
+  height: auto;
+}
+body, app-root, app-patent-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 80vh;
+}
+
+app-patent-results-page, app-patent-search-form { min-height: 80vh }
+
+

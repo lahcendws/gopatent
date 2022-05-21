@@ -1,0 +1,57 @@
+@import "../../../_variables";
+
+main {
+  background-color: $bg-gray;
+}
+
+.container {
+  background-color: $white;
+  margin-bottom: 25vh;
+  margin-top: 12vh;
+
+  h2 {
+    font-family: $title-font;
+    font-size: $size-1;
+    color: $primary;
+    @include lg-max {
+      font-size: $size-2;
+    }
+
+    @include md-only {
+      font-size: $size-3;
+    }
+
+    @include sm-only {
+      font-size: $size-4;
+    }
+  }
+
+  label {
+    color: $primary;
+    font-family: $title-font;
+  }
+
+  .login {
+    h2, label {
+      color: $medium-primary;
+    }
+
+    .btn {
+      background-color: $medium-primary;
+      &:hover {
+        color: $primary;
+        background-color: $secondary;
+      }
+    }
+  }
+
+  .inscription {
+    background-color: $medium-primary;
+
+    .btn:hover {
+      color: $primary;
+      background-color: $white;
+      text-decoration: none;
+    }
+  }
+}

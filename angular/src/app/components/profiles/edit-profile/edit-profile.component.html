@@ -1,0 +1,69 @@
+<!-- Thuy: Tab Edit user's infos-->
+
+<div class="container col-md-10 col-lg-9">
+  <h2 class="text-center fw-bold my-5">Mes données personnelles</h2>
+
+  <!-- Create reactive form to edit user infos -->
+  <form [formGroup]="editProfileForm" #myform="ngForm" (ngSubmit)="onFormSubmit()" novalidate class="container rounded shadow pt-3 pb-5">
+
+    <!-- Input field for firstname -->
+    <div class="form-group">
+      <label for="firstname" class="form-label fw-bold">Prénom
+      </label>
+      <mat-form-field appearance="fill" class="form-control mb-4">
+        <input matInput type="text" id="firstname" formControlName="firstname" class="text-capitalize text-primary fst-italic"
+               value="{{ user?.firstname }}" [ngClass]="{ 'is-invalid': editProfileForm.valid && editProfileForm.controls['firstname'].errors }">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+        <!-- Show error message if any -->
+        <mat-error *ngIf="editProfileForm.invalid && editProfileForm.controls['firstname'].errors" >
+          <div *ngIf="editProfileForm.controls['firstname'].errors['required']">Le prénom est requis</div>
+          <div *ngIf="editProfileForm.controls['firstname'].errors['minlength']">Le prénom doit contenir au moins 3 caractères</div>
+          <div *ngIf="editProfileForm.controls['firstname'].errors['maxlength']">Le prénom ne doit pas dépasser 40 caractères</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- Input field for lastname -->
+    <div class="form-group">
+      <label for="lastname" class="form-label fw-bold">Nom</label>
+      <mat-form-field appearance="fill" class="form-control mb-4">
+        <input matInput type="text" id="lastname" formControlName="lastname" class="text-capitalize text-primary fst-italic"
+               value="{{ user?.lastname }}" [ngClass]="{ 'is-invalid': editProfileForm.valid && editProfileForm.controls['lastname'].errors }">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+        <!-- Show error message if any -->
+        <mat-error *ngIf="editProfileForm.invalid && editProfileForm.controls['lastname'].errors" >
+          <div *ngIf="editProfileForm.controls['lastname'].errors['required']">Le nom est requis</div>
+          <div *ngIf="editProfileForm.controls['lastname'].errors['minlength']">Le nom doit contenir au moins 3 caractères</div>
+          <div *ngIf="editProfileForm.controls['lastname'].errors['maxlength']">Le nom ne doit pas dépasser 40 caractères</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Slide toggle using Angular Material -->
+    <mat-slide-toggle formControlName="employed" id="employed" (change)="onChangeEmployed($event)"  [checked]="user?.employed" >Je suis salarié</mat-slide-toggle>
+    <mat-slide-toggle formControlName="createdCompany" id="createdCompany" (change)="onChangeCreatedCompany($event)" [checked]="user?.createdCompany">J'ai contribué à la création de mon entreprise</mat-slide-toggle>
+    <mat-slide-toggle formControlName="companyDomain" id="companyDomain" (change)="onChangeCompanyDomain($event)" [checked]="user?.companyDomain">Mon entreprise a un lien avec mon domaine technique</mat-slide-toggle>
+
+    <!-- Input field for company name -->
+    <div class="form-group mt-4">
+      <label for="lastname" class="form-label fw-bold">Nom de l'entreprise</label>
+      <mat-form-field appearance="fill" class="form-control">
+        <input matInput type="text" id="companyName" formControlName="companyName" class="text-capitalize text-primary fst-italic"
+               value="{{ user?.companyName }}" [ngClass]="editProfileForm.valid && editProfileForm.controls['companyName'].errors ?'is-invalid':''">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+        <!-- Show error message if any -->
+
+        <mat-error *ngIf="editProfileForm.invalid && editProfileForm.controls['companyName'].errors" >
+          <div *ngIf="editProfileForm.controls['companyName'].errors['required']">Le nom est requis</div>
+          <div *ngIf="editProfileForm.controls['companyName'].errors['minlength']">Le nom de l'entrepise doit contenir au moins 3 caractères</div>
+          <div *ngIf="editProfileForm.controls['companyName'].errors['maxlength']">Le nom de l'entrepise ne doit pas dépasser 255 caractères</div>
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+    <div class="form-group justify-content-center d-flex mt-4">
+      <button type="submit" class="button btn btn-primary px-3">Enregistrer</button>
+    </div>
+
+  </form>
+</div>

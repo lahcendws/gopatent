@@ -1,0 +1,37 @@
+@import "../../../variables";
+
+.container {
+  border: $dark-gray;
+}
+
+.header {
+   background-color: darken($medium-primary, 5%);
+   color: white;
+   font-size: 1.5em;
+   padding: 1rem;
+   text-align: center;
+
+    h2 {
+    font-family: "Roboto Slab", serif;
+    font-size: $size-1;
+    padding: 30px 0;
+    @include lg-max {
+      font-size: $size-2;
+    }
+
+    @include md-max {
+      font-size: $size-3;
+    }
+  }
+}
+
+.table-users {
+   border: 1px solid darken($medium-primary, 5%);
+   border-radius: $borderRadius;
+   box-shadow: 3px 3px 0 $bg-gray;
+   overflow: hidden;
+
+  tbody td {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,34 @@
+@import "../../../../variables";
+
+.button {
+  background: $bg-gray;
+  /*border: 2px solid $medium-primary;*/
+/*  border-radius: 5px;*/
+  display: inline-block;
+  cursor: pointer;
+  color: $dark-gray;
+  font-family: $title-font;
+  font-size: $size-4;
+  font-weight: bold;
+  padding: 6px $size-4;
+  text-decoration: none;
+  @include md-max {
+    font-size: $size-5;
+  }
+}
+
+.activebutton {
+  background: $medium-primary;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  color: $white;
+  font-family: $title-font;
+  font-size: $size-4;
+  font-weight: bold;
+  padding: 6px $size-4;
+  text-decoration: none;
+  @include md-max {
+    font-size: $size-5;
+  }
+}

@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md navbar-light shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand mb-1" href="#" routerLink="" routerLinkActive="active"><img src="assets/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <div class="btn-container w-100 text-center">
+        <a routerLink="recherche" class="btn btn-gray"><img src="../../../assets/magnifyinglass.svg" class="m-2" alt="">Lancez votre Recherche</a>
+      </div>
+
+      <!-- Thuy: If log out or not connected: show button login or inscription -->
+      <div class="d-flex flex-column flex-md-row justify-content-lg-end justify-content-center me-lg-3 my-4" *ngIf="!isLoggedIn">
+        <a class="btn btn-group-lg rounded text-primary fw-bold btn-light me-3 mb-2 mb-md-0 text-decoration-none w-100 w-lg-75 btn-login" [routerLink]="['login/']"><span class="px-3">Connexion</span></a>
+        <a class="btn btn-group-lg btn-primary text-white fw-bold rounded text-decoration-none w-100 w-lg-75 btn-inscription" [routerLink]="['inscription/']"><span class="px-3">Inscription</span></a>
+      </div>
+      <!-- If logged in and in responsive-->
+      <div class="d-flex flex-column justify-content-lg-end justify-content-center me-lg-3 my-4 responsiveMenu" *ngIf="isLoggedIn && innerwidth < 768">
+        <a class="btn btn-group-lg btn-secondary text-primary fw-bold rounded text-decoration-none w-100 w-lg-75 btn-burger" [routerLink]="['/user/profile/edit']"><span class="px-3">Mes données personnelles</span></a>
+        <a class="btn btn-group-lg btn-secondary text-primary fw-bold rounded text-decoration-none w-100 w-lg-75 btn-burger" [routerLink]="['/user/profile/domains']"><span class="px-3">Gérer mes préférences</span></a>
+        <a class="btn btn-group-lg btn-secondary text-primary fw-bold rounded text-decoration-none w-100 w-lg-75 btn-burger" [routerLink]="['/user/profile/patents']"><span class="px-3">Mes brevets favoris</span></a>
+        <a *ngIf="isAdmin" class="btn btn-group-lg btn-secondary text-primary fw-bold rounded text-decoration-none w-100 w-lg-75 btn-burger" [routerLink]="['/admin/users']"><span class="px-3">Gérer les utilisateurs</span></a>
+        <a class="btn btn-group-lg btn-secondary text-primary fw-bold rounded text-decoration-none w-100 w-lg-75 btn-burger" (click)="logout()"><span class="px-3">Déconnexion</span></a>
+      </div>
+
+
+      <!-- Dropdown menu showed if logged in -->
+      <div class="dropdown" *ngIf="isLoggedIn && innerwidth >= 768">
+        <a class="nav-link dropdown-toggle fw-bold text-primary text-center fs-6 fs-md-5"  id="navbarDropdownMenuLink" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          Bienvenue
+          <span class="text-danger fst-italic fs-6 fs-md-5">{{currentUser.email }}</span>
+        </a>
+        <ul class="dropdown-menu shadow-lg w-100 myspace fs-6 fs-md-5" aria-labelledby="dropdownMenuLink">
+          <li>
+            <a class="dropdown-item d-flex align-items-center text-decoration-none fw-bold" routerLink="/user/profile/edit">
+              <i class="bi bi-people-fill fs-md-5 mx-3"></i>Mes données personnelles
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center text-decoration-none fw-bold" routerLink="/user/profile/domains">
+              <i class="bi bi-bookmark-star-fill mx-3"></i>Gérer mes préférences
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center text-decoration-none fw-bold" routerLink="/user/profile/patents">
+              <i class="bi bi-heart-fill mx-3"></i>Mes brevets favoris
+            </a>
+          </li>
+          <li>
+            <span *ngIf="isAdmin">
+              <a class="dropdown-item d-flex align-items-center text-decoration-none fw-bold" routerLink="/admin/users">
+                <i class="bi bi-file-earmark-person-fill mx-3"></i>Gérer les utilisateurs
+              </a>
+            </span>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center text-decoration-none text-danger fw-bold" (click)="logout()">
+              <i class="bi bi-power text-danger mx-3"></i>Déconnexion
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ </nav>

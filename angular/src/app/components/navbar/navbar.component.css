@@ -1,0 +1,105 @@
+/* We need to import the variables file in each component to make it work */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/*// Colors  -----------------------------------------------------------------------------------------------*/
+/*// Fonts  -----------------------------------------------------------------------------------------------*/
+/*// Mixins for responsive development -----------------------------------------------------------------------------------------------*/
+/*// image dimension -----------------------------------------------------------------------------------------------*/
+/* Fix IE Only */
+.navbar {
+  background-color: #FCAC4C;
+  font-family: "Roboto Slab", serif;
+}
+@media (min-width: 768px) {
+  .navbar .dropdown-box {
+    margin-left: -110px;
+  }
+}
+@media (max-width: 767.98px) {
+  .navbar .nav-link {
+    font-size: 24px;
+  }
+}
+
+.navbar-brand img {
+  width: 150px;
+}
+
+/* Style for middle search button */
+.btn-gray {
+  font-size: 24px;
+  background-color: #808080;
+  color: #FBFBFA;
+  transition: all 0.5s;
+  position: relative;
+}
+@media (max-width: 575.98px) {
+  .btn-gray {
+    font-size: 17px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.92px) {
+  .btn-gray {
+    font-size: 17px;
+  }
+}
+.btn-gray:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+.btn-gray:hover:before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+.btn-gray:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  transform: scale(1.2, 1.2);
+  border-radius: 5px;
+}
+.btn-gray:hover:after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+/* Style for dropdown menu */
+.myspace {
+  background-color: #E5E5E5;
+}
+.myspace a:hover {
+  background-color: #045494;
+  color: #FBFBFA;
+}
+
+/* Style for button login and inscription */
+.btn-login:hover {
+  background-color: #041C6C;
+  transform: scale(1, 1);
+  transition: all 0.3s;
+}
+.btn-login:hover span {
+  color: #FBFBFA;
+}
+
+.btn-inscription:hover {
+  background-color: #FBFBFA;
+}
+.btn-inscription:hover span {
+  color: #041C6C;
+}
+
+/*# sourceMappingURL=navbar.component.css.map */

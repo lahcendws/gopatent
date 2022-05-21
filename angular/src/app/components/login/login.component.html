@@ -1,0 +1,75 @@
+<main>
+  <section class="justify-content-center d-flex">
+    <div class="row gx-0 container rounded shadow">
+
+      <!-- Login Part -->
+      <div class="col-md-6 login justify-content-center d-flex">
+        <div class="col-10">
+          <h2 class="justify-content-center d-flex my-5">Connexion</h2>
+
+          <!-- Message error if something wrong from back (spring) -->
+          <div class="alert alert-danger d-flex justify-content-center my-4" *ngIf="isLoginFailed">
+            <p class="text-center fs-6 me-sm-5">{{ errorMessage }}</p>
+            <button type="button" class="btn-close fs-6" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          <form *ngIf="!isLoggedIn" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <!-- E-mail -->
+            <div class="form-group mb-4">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                name="email"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['email'].errors }"
+                required
+              />
+              <div *ngIf="submitted && form.controls['email'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['email'].errors['required']">Le mail est requis</div>
+                <div *ngIf="form.controls['email'].errors['email']">Le mail est invalide</div>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group mb-4">
+              <label for="pass">Mot de passe</label>
+              <input
+                id="pass"
+                type="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['password'].errors }"
+                required
+              />
+              <div *ngIf="submitted && form.controls['password'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['password'].errors['required']">Le mot de passe est requis</div>
+              </div>
+            </div>
+            <div class="form-group justify-content-center d-flex mt-4">
+              <button type="submit" class="btn btn-primary col-md-6 px-5 my-3">
+                Me connecter
+              </button>
+            </div>
+
+            <app-forgot-password></app-forgot-password>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Register Part -->
+      <div class="col-md-6 inscription justify-content-center d-flex">
+        <div class="col-10">
+          <h2 class="justify-content-center d-flex my-5 text-white">Inscription</h2>
+          <p class="justify-content-center d-flex text-white">Vous n'avez pas encore de compte?</p>
+          <div class="form-group justify-content-center d-flex mt-4 mb-5">
+            <a type="button" class="btn btn-secondary col-md-6 px-5 my-3" [routerLink]="['../inscription/']">S'inscrire</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/*// Colors  -----------------------------------------------------------------------------------------------*/
+/*// Fonts  -----------------------------------------------------------------------------------------------*/
+/*// Mixins for responsive development -----------------------------------------------------------------------------------------------*/
+/*// image dimension -----------------------------------------------------------------------------------------------*/
+/* Fix IE Only */
+.button {
+  background: #E5E5E5;
+  /*border: 2px solid $medium-primary;*/
+  /*  border-radius: 5px;*/
+  display: inline-block;
+  cursor: pointer;
+  color: #808080;
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+}
+@media (max-width: 767.98px) {
+  .button {
+    font-size: 12px;
+  }
+}
+
+.activebutton {
+  background: #045494;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  color: #FBFBFA;
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+}
+@media (max-width: 767.98px) {
+  .activebutton {
+    font-size: 12px;
+  }
+}
+
+/*# sourceMappingURL=profile-navbar.component.css.map */

@@ -1,0 +1,100 @@
+/* We need to import the variables file in each component to make it work */
+@import "../../../variables";
+
+.navbar {
+ background-color: $secondary;
+ font-family: $title-font;
+
+  .dropdown-box {
+    @include md {
+      margin-left: -110px;
+    }
+  }
+  .nav-link {
+    @include md-max {
+      font-size: $size-4;
+    }
+  }
+
+}
+
+.navbar-brand {
+    img {
+    width: 150px;
+  }
+}
+/* Style for middle search button */
+.btn-gray {
+font-size: $size-4;
+  background-color: $dark-gray;
+  color: $white;
+  transition: all 0.5s;
+  position: relative;
+  @include sm-max {
+    font-size: $size-5 + 5;
+  }
+  @include md-only {
+    font-size: $size-5 + 5;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255,255,255,0.1);
+    transition: all 0.3s;
+    border-radius: 5px;
+
+  }
+  &:hover:before {
+    opacity: 0 ;
+    transform: scale(0.5,0.5);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+
+    transform: scale(1.2,1.2);
+    border-radius: 5px;
+  }
+  &:hover:after {
+    opacity: 1;
+    transform: scale(1,1);
+  }
+}
+
+/* Style for dropdown menu */
+.myspace {
+  background-color: #E5E5E5;
+  a:hover {
+    background-color: $medium-primary;
+    color: $white;
+  }
+}
+
+/* Style for button login and inscription */
+.btn-login:hover {
+  background-color: $primary;
+  transform: scale(1,1);
+  transition: all 0.3s;
+  span {
+    color: $white;
+  }
+}
+
+.btn-inscription:hover {
+  background-color: $white;
+  span {
+    color: $primary;
+  }
+}

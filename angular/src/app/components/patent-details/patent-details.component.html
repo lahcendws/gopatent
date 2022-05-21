@@ -1,0 +1,16 @@
+<!--Result details section -->
+<div class="col col-lg-12 patent-details-section rounded shadow p-5">
+  <p><span class="fw-bold my-2">Titre: </span>{{ patent?.title }}</p>
+  <p><span class="fw-bold my-2">Numéro de publication: </span>{{ patent?.patentNumber }}</p>
+  <p><span class="fw-bold my-2">Date de publication: </span>{{ patent?.releaseDate }}</p>
+  <p><span class="fw-bold my-2">Numéro IPC: </span>{{ patent?.ipc}}</p>
+  <p><span class="fw-bold my-2">Catégorie(s): </span><span *ngFor="let bigDomain of patent?.bigDomains"> {{ bigDomain }} </span></p>
+  <p><span class="fw-bold my-2">Domaine(s): </span><span *ngFor="let domain of patent?.domains"> {{ domain }} </span></p>
+  <p><span class="fw-bold my-2">Demandeur: </span>{{ patent?.applicantName }}</p>
+  <p><span class="fw-bold my-2">Inventeur: </span ><span *ngFor="let inventor of patent?.inventorsArrayList"> {{ inventor }} </span></p>
+  <p><span class="fw-bold my-2"><a href="{{ patent?.espaceNetUrl }}" target= "_blank">Lien vers la fiche sur espacenet</a></span></p>
+  <p><span class="fw-bold my-2">Résumé: </span>{{ patent?.patentAbstract }}</p>
+  <div *ngIf="patent?.figure != '' && patent?.figure != undefined" class="d-flex align-items-center my-5">
+    <img class="w-50 m-auto" src="{{ patent?.figure }}" alt="">
+  </div>
+</div>

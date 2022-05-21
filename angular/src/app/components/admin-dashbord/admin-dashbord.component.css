@@ -1,0 +1,43 @@
+/*// Colors  -----------------------------------------------------------------------------------------------*/
+/*// Fonts  -----------------------------------------------------------------------------------------------*/
+/*// Mixins for responsive development -----------------------------------------------------------------------------------------------*/
+/*// image dimension -----------------------------------------------------------------------------------------------*/
+/* Fix IE Only */
+.container {
+  border: #808080;
+}
+
+.header {
+  background-color: #03467b;
+  color: white;
+  font-size: 1.5em;
+  padding: 1rem;
+  text-align: center;
+}
+.header h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 64px;
+  padding: 30px 0;
+}
+@media (max-width: 991.92px) {
+  .header h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 767.98px) {
+  .header h2 {
+    font-size: 36px;
+  }
+}
+
+.table-users {
+  border: 1px solid #03467b;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 #E5E5E5;
+  overflow: hidden;
+}
+.table-users tbody td {
+  font-size: 14px;
+}
+
+/*# sourceMappingURL=admin-dashbord.component.css.map */

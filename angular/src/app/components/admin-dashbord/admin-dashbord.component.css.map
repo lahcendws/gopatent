@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["admin-dashbord.component.scss","../../../_variables.scss"],"names":[],"mappings":"AAAQ;ACAA;AAER;AAUA;AASA;AAOA;AA2GA;ADpIA;EACE,QCKU;;;ADFZ;EACG;EACA;EACA;EACA;EACA;;AAEC;EACA;EACA,WCDK;EDEL;;AC+DF;EDlEE;IAKE,WCHG;;;AA0DP;ED5DE;IASE,WCNG;;;;ADWT;EACG;EACA,eCpBY;EDqBZ;EACA;;AAED;EACE","file":"admin-dashbord.component.css"}

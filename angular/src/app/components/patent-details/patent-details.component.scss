@@ -1,0 +1,25 @@
+@use "sass:math";
+@import "../../../variables";
+
+
+.patent-details-section {
+  background-color: $bg-gray;
+  height: 70vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  p {
+    font-size: math.div($size-4, 1.5);
+    font-family: $parag-font;
+    span {
+      font-family: $title-font;
+    }
+  }
+}
+
+#patentModalCenter {
+/*  display: block;
+  @include lg {
+    display: none;
+  }*/
+}

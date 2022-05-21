@@ -1,0 +1,74 @@
+@import "../../../variables";
+
+
+main {
+  background-color: $bg-gray;
+  height: 100%;
+}
+
+.paginationLinks {
+  cursor: pointer;
+}
+
+.search-results-col ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: $primary;
+}
+.chargingTitle {
+  color: $primary;
+  font-family: $title-font;
+  font-size: $size-4;
+}
+
+.patentResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @include lg {
+    flex-direction: row;
+  }
+}
+
+.resultTitle {
+  width: fit-content;
+  line-height: 1em;
+}
+
+.container-fluid {
+  height: 100% !important;
+}
+
+.patentBox {
+  height: fit-content;
+  cursor: pointer !important;
+}
+.patentDetails {
+  height: 80vh !important;
+}
+
+.chargingSpinner {
+  height: 72vh;
+}
+.search-results-col {
+  height: fit-content;
+  background-color: $white;
+
+  h2 {
+    font-size: $size-2;
+  }
+
+  h2, h5 {
+    font-family: $title-font;
+  }
+
+  p {
+    font-family: $parag-font;
+  }
+}
+
+.page-item {
+  width: 100px;
+  text-align: center;
+}
+
+

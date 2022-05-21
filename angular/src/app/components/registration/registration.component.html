@@ -1,0 +1,128 @@
+<main>
+  <section class="justify-content-center d-flex">
+    <div class="container justify-content-center d-flex p-5 rounded shadow">
+      <div class="register-form justify-content-center d-flex col-12">
+        <div class="col-12">
+          <h2 class="justify-content-center d-flex my-5">Inscription</h2>
+
+          <!-- Message error if something wrong from back (spring) -->
+          <div class="alert alert-danger d-flex justify-content-center my-4" *ngIf="isSignUpFailed">
+            <p class="text-center fs-6 me-sm-5">{{ errorMessage }}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          <!-- Inscription form -->
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <!-- E-mail -->
+            <div class="form-group mb-4">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['email'].errors }"
+                required
+              />
+              <div *ngIf="submitted && form.controls['email'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['email'].errors['required']">Le mail est requis</div>
+                <div *ngIf="form.controls['email'].errors['email']">Le mail est invalide</div>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group mb-4">
+              <label for="pass">Mot de passe</label>
+              <input
+                id="pass"
+                type="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['password'].errors }"
+                required
+              />
+              <div *ngIf="submitted && form.controls['password'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['password'].errors['required']">Le mot de passe est requis</div>
+                <div *ngIf="form.controls['password'].errors['minlength']">
+                  Le mot de passe doit comporter au moins 6 caractères
+                </div>
+                <div *ngIf="form.controls['password'].errors['maxlength']">
+                  Le mot de passe ne doit pas dépasser 40 caractères
+                </div>
+              </div>
+            </div>
+
+            <!-- Password Confirmation -->
+            <div class="form-group mb-4">
+              <label for="pass_again">Confirmer le mot de passe</label>
+              <input
+                id="pass_again"
+                type="password"
+                formControlName="confirmPassword"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['confirmPassword'].errors }"
+                required
+              />
+              <div
+                *ngIf="submitted && form.controls['confirmPassword'].errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="form.controls['confirmPassword'].errors['required']">
+                  La confirmation du mot de passe est requise
+                </div>
+                <div *ngIf="form.controls['confirmPassword'].errors['matching']">
+                  Le mot de passe est different
+                </div>
+              </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group mb-4">
+              <label for="lastname">Nom</label>
+              <input
+                id="lastname"
+                type="text"
+                formControlName="lastname"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['lastname'].errors }"
+                required
+              />
+              <div *ngIf="submitted && form.controls['lastname'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['lastname'].errors['required']">Le nom est requis</div>
+                <div *ngIf="form.controls['lastname'].errors['minlength']">
+                  Le nom doit comporter au moins 3 caractères
+                </div>
+                <div *ngIf="form.controls['lastname'].errors['maxlength']">
+                  Le nom ne doit pas dépasser 40 caractères
+                </div>
+              </div>
+            </div>
+
+            <!-- First Name -->
+            <div class="form-group mb-4">
+              <label for="firstname">Prénom</label>
+              <input id="firstname" type="text" formControlName="firstname" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && form.controls['firstname'].errors }" required
+              />
+              <div *ngIf="submitted && form.controls['firstname'].errors" class="invalid-feedback">
+                <div *ngIf="form.controls['firstname'].errors['required']">Le prénom est requis</div>
+                <div *ngIf="form.controls['firstname'].errors['minlength']">
+                  Le prénom doit comporter au moins 3 caractères
+                </div>
+                <div *ngIf="form.controls['firstname'].errors['maxlength']">
+                  Le prénom ne doit pas dépasser 40 caractères
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group justify-content-center d-flex mt-4">
+              <button type="submit" class="btn btn-primary col-11 col-md-6 px-5 my-3">S'inscrire</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    </section>
+</main>

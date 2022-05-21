@@ -1,0 +1,12 @@
+@import "../../../variables";
+
+footer {
+  background-color: $medium-primary;
+  li, a, p {
+    color: $white;
+  }
+  p {
+    font-family: $title-font;
+  }
+
+}

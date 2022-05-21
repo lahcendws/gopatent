@@ -1,0 +1,42 @@
+<div class="container my-5 rounded box-shadow border-1">
+  <div class="table-users">
+    <div class="header">
+      <h2 class="text-light">Gérer les utilisateurs</h2>
+    </div>
+
+    <!-- Table: user manage -->
+    <table class="table table-borderless">
+      <thead scope="col" class="bg-secondary text-primary">
+        <tr>
+          <th class="text-center text-primary fw-bold fs-6">Nom</th>
+          <th class="d-none d-md-block text-center text-primary fw-bold fs-6">Prénom</th>
+          <th class="text-center text-primary fw-bold fs-6">Adresse email</th>
+          <th class="text-center text-primary fw-bold fs-6">Entreprise</th>
+          <th class="text-center text-primary fw-bold fs-6">Action</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: page }" scope="row">
+        <tr>
+          <td class="text-center text-primary d-none d-md-block text-primary">{{ user.firstname }}</td>
+          <td class="text-center text-primary">{{ user.lastname }}</td>
+          <td class="text-center text-primary">{{ user.email }}</td>
+          <td class="text-center text-primary">{{ user.companyName }}</td>
+          <td class="text-center">
+            <a (click)="deleteUser(user)">
+               <i class="bi bi-trash-fill text-danger fs-4"></i>
+           </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="text-center">
+      <pagination-controls
+        (pageChange)="handlePageChange($event)"
+        previousLabel="Précedent"
+        nextLabel="Suivant"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>

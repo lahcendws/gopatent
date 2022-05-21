@@ -1,0 +1,75 @@
+@import "../../../../variables";
+
+.container {
+  background-color: $white;
+
+}
+
+.container h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: $size-1;
+  padding: 30px 0;
+  color: $primary;
+  @include lg-max {
+    font-size: $size-2;
+  }
+
+  @include md-only {
+    font-size: $size-3;
+  }
+
+  @include sm-only {
+    font-size: $size-4;
+  }
+}
+
+.editform {
+  padding: 20px;
+}
+
+.container label {
+  color: $primary;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .btn:hover {
+  color: $white;
+  background-color: $primary;
+}
+
+.container .btn {
+  color: $primary;
+  background-color: $secondary;
+  border-color: $secondary;
+}
+
+.mat-slide-toggle {
+  margin: 8px 0;
+  display: block;
+}
+
+/* CSS to change 'Warn' color */
+
+::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $primary;
+}
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: $secondary;
+}
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.1em 0px !important;}
+
+::ng-deep .mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix  { padding: 0.4em 0px }
+::ng-deep .mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(.75);
+  width: 133.33333%;
+}
+
+::ng-deep .mat-form-field-underline {
+  caret-color: $secondary !important;
+}
+
+::ng-deep .mat-input-element {
+  color: $secondary !important;
+}

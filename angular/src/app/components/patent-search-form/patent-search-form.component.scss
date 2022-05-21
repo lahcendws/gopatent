@@ -1,0 +1,36 @@
+/* We need to import the variables file in each component to make it work */
+@import "../../../variables";
+
+main, body{
+  background-color: $bg-gray !important;
+}
+
+.searchTitle {
+  line-height: 1em;
+}
+
+.search-form {
+  background-color: $white;
+
+  h2 {
+    font-family: $title-font;
+    font-size: $size-1;
+    color: $primary;
+    @include lg-max {
+      font-size: $size-2;
+    }
+
+    @include md-only {
+      font-size: $size-3;
+    }
+
+    @include sm-only {
+      font-size: $size-4;
+    }
+  }
+
+  label {
+    color: $primary;
+    font-family: $title-font;
+  }
+}

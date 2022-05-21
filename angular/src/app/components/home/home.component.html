@@ -1,0 +1,35 @@
+<div class="jumbotron jumbotron-fluid heroimage">
+  <div class="container position-relative">
+    <h1 class="display-4 fw-bold">PIScope</h1>
+    <p class="mt-4">Le service pour trouver des brevets facilement.</p>
+    <div *ngIf="!isLoggedIn" class="box-calltoaction position-relative rounded py-5 shadow">
+      <div>
+        <h2 class="text-center w-75 m-auto text-light py-4">EXPLOREZ LES BASES DE DONNÉES EUROPÉENNE DE BREVETS</h2>
+        <div class="text-center d-block pt-2 btns-container">
+          <a class="btn btn-secondary fw-bold text-light px-5 py-3 mx-3 my-2"
+             [routerLink]="['inscription/']">S'inscrire</a>
+          <a class="btn btn-primary px-5 mx-3 py-3 fw-bold" [routerLink]="['login/']">Connexion</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isLoggedIn" class="box-calltoaction position-relative rounded py-5 shadow">
+      <div>
+        <h2 class="text-center w-75 m-auto text-light py-4">EXPLOREZ LES BASES DE DONNÉES EUROPÉENNE DE BREVETS</h2>
+        <div class="text-center d-block pt-2 btns-container">
+          <a class="btn btn-secondary fw-bold text-light px-5 py-3 mx-3 my-2"
+             [routerLink]="['recherche']">Commencez votre recherche</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="vid-section">
+  <div class="container-fluid videoContainer p-0">
+    <div>
+    <video class="bg-primary shadow" width="100%" height="100%" autoplay muted loop controls preload="auto">
+      <source src="../../../assets/homevideosampleLight.mp4" type="video/mp4">
+    </video>
+    </div>
+  </div>
+</section>

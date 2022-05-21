@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+/*// Colors  -----------------------------------------------------------------------------------------------*/
+/*// Fonts  -----------------------------------------------------------------------------------------------*/
+/*// Mixins for responsive development -----------------------------------------------------------------------------------------------*/
+/*// image dimension -----------------------------------------------------------------------------------------------*/
+/* Fix IE Only */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.container {
+  background-color: #FBFBFA;
+}
+
+.container h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 64px;
+  padding: 30px 0;
+  color: #041C6C;
+}
+@media (max-width: 991.92px) {
+  .container h2 {
+    font-size: 48px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.92px) {
+  .container h2 {
+    font-size: 36px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .container h2 {
+    font-size: 24px;
+  }
+}
+
+.editform {
+  padding: 20px;
+}
+
+.container label {
+  color: #041C6C;
+  font-family: "Roboto Slab", serif;
+}
+
+.container .btn:hover {
+  color: #FBFBFA;
+  background-color: #041C6C;
+}
+
+.container .btn {
+  color: #041C6C;
+  background-color: #FCAC4C;
+  border-color: #FCAC4C;
+}
+
+.mat-slide-toggle {
+  margin: 8px 0;
+  display: block;
+}
+
+/* CSS to change 'Warn' color */
+::ng-deep .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #041C6C;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #FCAC4C;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.1em 0px !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix {
+  padding: 0.4em 0px;
+}
+
+::ng-deep .mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper {
+  top: -1.5em;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  width: 133.33333%;
+}
+
+::ng-deep .mat-form-field-underline {
+  caret-color: #FCAC4C !important;
+}
+
+::ng-deep .mat-input-element {
+  color: #FCAC4C !important;
+}
+
+/*# sourceMappingURL=edit-profile.component.css.map */
